@@ -1,0 +1,28 @@
+service: whatsapp-bot
+# app and org for use with dashboard.serverless.com
+app: whatsapp-bot
+org: inderaihsan
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details 
+
+plugins:
+  - serverless-bundle # Package our functions with Webpack
+  - serverless-offline
+  - serverless-dotenv-plugin # Load .env as environment variables
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+
+
+functions:
+  findgoogle:
+    handler: handler.readgoogle 
+    events:  
+      - http:
+          path: search 
+          method: post
+
